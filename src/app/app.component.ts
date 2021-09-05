@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-
+import { Component  } from '@angular/core';
+import { AuthenticationService } from './services/authentication.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cart';
+  currentUser: any;
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
+
 }

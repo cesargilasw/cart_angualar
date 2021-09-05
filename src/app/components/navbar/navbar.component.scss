@@ -1,0 +1,8 @@
+
+.nabar_section {
+    .nav-link {
+        cursor: pointer;
+        &.contact_link { color:#9393f7; }
+        &.logout_link { color:#fd8181; }
+    }
+}
