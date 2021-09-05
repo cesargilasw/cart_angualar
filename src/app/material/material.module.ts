@@ -5,14 +5,18 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+//import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
+//import { MatNativeDateModule } from '@angular/material/core';
 
 const MaterialComponents = [
   MatSortModule,
   MatPaginatorModule,
   MatTableModule,
   MatSelectModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  //MatProgressSpinnerModule,
+  //MatNativeDateModule
 ]
 @NgModule({
   declarations: [],

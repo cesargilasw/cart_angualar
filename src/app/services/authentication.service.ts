@@ -34,7 +34,7 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');
-        //this._router.navigate(['auth']);
+        this._router.navigate(['/']);
         this.currentUserSubject.next(null);
     }
 

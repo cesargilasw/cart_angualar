@@ -9,13 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoggedNavbarComponent implements OnInit {
   currentUser: any;
-
+  currentUserName = '';
   constructor(private router: Router, private route: ActivatedRoute, private authenticationService: AuthenticationService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
-  
+    this.currentUserName = this.currentUser.name;
   }
   logout() {
     this.authenticationService.logout();

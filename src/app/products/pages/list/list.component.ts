@@ -4,29 +4,29 @@ import { CategoryService } from '../../../services/category/category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit{
+export class ListComponent implements OnInit {
   searcProduct: string = '';
   displayedColumns: any;
-  categories = [];
+  categories: any;
   selectedCategory: string = '';
-  isLoading: boolean = true;  
-
-
+  isLoading: boolean = true;
   pageEvent: PageEvent | undefined;
   dataSource: any;
-  currentPage:any;
-  pageSize:any;
-  length:any;
-  // Items per page displayed
-  itemsPerPage = 2;
-  
+  currentPage = 1;
+  length = 0;
+  itemsPerPage = 5;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   constructor(private _productService: ProductService, private _categoryService: CategoryService, private router: Router, private route: ActivatedRoute,) {
 
   }
@@ -35,6 +35,12 @@ export class ListComponent implements OnInit{
     this.displayedColumns = ['name', 'description', 'price', 'actions'];
     this.getList();
     this.getCategories();
+  }
+
+  onChangePage(pe: PageEvent) {
+    this.currentPage = pe.pageIndex + 1;
+    this.itemsPerPage = pe.pageSize
+    this.getList();
   }
 
   /**
@@ -49,7 +55,7 @@ export class ListComponent implements OnInit{
   // Shoot when the select category change    
   onCategoryChange($event: any): void {
     this.selectedCategory = $event.target.value;
-    alert(this.selectedCategory)
+    this.getList();
   }
 
   /**
@@ -57,29 +63,32 @@ export class ListComponent implements OnInit{
   * @param {id} number - Id of producto to see detail     
   */
   goDetails(id: number): void {
-    this.router.navigate([`products/${id}`]);
+    this.router.navigate([`/product/detail/${id}`]);
   }
-  
+
   // Call API to get all products
   getList(): void {
     this.isLoading = true;
     let query = this.getQueryParameters();
     this._productService.getProducts(query).then(result => {
-      if ( result['data'].data ) {
+      if (result['data'].data) {
         this.dataSource = result['data'].data;
+        this.dataSource = new MatTableDataSource<any>(this.dataSource);
+        this.dataSource.paginator = this.paginator;
+        this.length = result['data'].total;
+        console.log(" length " + this.length);
       }
+      this.isLoading = false;
     });
   }
-
 
   // Call API to get all categories
   getCategories(): void {
     this._categoryService.getCategory().then(result => {
-      if ( result['data'].data ) {
-        this.categories = result['data'].data;
+      if (result['data']) {
+        this.categories = result['data'];
       }
     });
-    console.log(this.categories);
   }
 
   // Return all query parameters object
@@ -92,7 +101,6 @@ export class ListComponent implements OnInit{
     };
     return querySearch;
   }
-
 
 
 }

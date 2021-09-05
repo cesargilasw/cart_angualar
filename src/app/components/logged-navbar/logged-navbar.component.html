@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<nav class="navbar navbar-expand navbar-dark bg-dark" >
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="#">Hello</a>
+        <a class="nav-item nav-link active" routerLink="#">Hello, {{ currentUserName }}</a>
         <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/products">Products</a>
+        <a class="nav-item nav-link" routerLink="/product">Products</a>
         <a class="nav-item nav-link" routerLink="/cart">Cart</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" role="button" (click)="logout()">Logout</a>
     </div>
   </nav>
