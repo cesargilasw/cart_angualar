@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://local.cart/api/'
+  //apiUrl: 'http://local.cart/api/'
+  apiUrl: 'https://cryptic-hamlet-75762.herokuapp.com/api/'
 };
 
 /*
