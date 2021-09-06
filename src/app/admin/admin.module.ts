@@ -33,9 +33,6 @@ import { MatCardModule } from '@angular/material/card';
     MatFormFieldModule,
     MatButtonModule,
     MatCardModule
-  ]/* ,
-  exports: [
-    MatTableModule
-  ] */
+  ]
 })
 export class AdminModule { }

@@ -20,7 +20,7 @@ export class LoggedNavbarComponent implements OnInit {
   ngOnInit(): void {
     this.currentUserName = this.currentUser.name;
     this.currentRole = this.currentUser.role;
-    this.getCartData();
+    this.getCountData();
   }
 
   // Call logout of service auth and remove credentials of storage
@@ -29,7 +29,8 @@ export class LoggedNavbarComponent implements OnInit {
     location.reload();
   }
 
-  getCartData(): void {
+  // Get number of type products
+  getCountData(): void {
     this.countCartItems = this._cartService.getCountProducts();
   }
   

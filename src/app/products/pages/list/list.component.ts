@@ -3,7 +3,6 @@ import { ProductService } from '../../../services/product/product.service';
 import { CategoryService } from '../../../services/category/category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -70,7 +69,6 @@ export class ListComponent implements OnInit {
     this._productService.getProducts(query).then(result => {
       if (result['data'].data) {
         this.dataSource = result['data'].data;
-        this.dataSource = new MatTableDataSource<any>(this.dataSource);
         this.dataSource.paginator = this.paginator;
         this.length = result['data'].total;
       }
