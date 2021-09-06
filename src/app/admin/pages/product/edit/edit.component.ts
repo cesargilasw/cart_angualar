@@ -101,7 +101,7 @@ export class EditComponent implements OnInit {
   editProduct() {
     this.isLoading = true;
     this._productService.editProduct( this.form.value, this.idProduct ).then( data => {
-      this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+      this.router.navigate(['/admin/product']);
     }, error => {
       console.log( error );
       this.isLoading = false;
