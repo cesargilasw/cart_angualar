@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Globals } from '../../classes/Globals';
+import { globals } from '../../classes/globals';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  globals = Globals;
+  globals = globals;
   constructor(private http: HttpClient ) { }
   
   async getProducts(query?: any ): Promise<any> {

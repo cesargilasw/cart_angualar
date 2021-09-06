@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Globals } from 'src/app/classes/Globals';
+import { globals } from 'src/app/classes/globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  globals = Globals;
+  globals = globals;
   constructor(private http: HttpClient ) { }
   
   async getCategory(): Promise<any> {
