@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Globals } from '../../classes/Globals';
+//import { Globals } from '../../classes/Globals';
+import { Globals } from 'src/app/classes/globals';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -27,6 +28,11 @@ export class ProductService {
   async editProduct(params: object, id: number ): Promise<any> {
     const url = `${this.globals.urlBase}${this.globals.admin.path}/${this.globals.admin.product}/${id}`;
     return await this.http.put(url, params).toPromise();
+  }
+
+  async deleteProduct(id: number ): Promise<any> {
+    const url = `${this.globals.urlBase}${this.globals.admin.path}/${this.globals.admin.product}/${id}`;
+    return await this.http.delete(url).toPromise();
   }
 
 }

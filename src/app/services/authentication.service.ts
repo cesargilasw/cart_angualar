@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Globals } from '../classes/Globals';
+//import { Globals } from '../classes/globals';
+import { Globals } from 'src/app/classes/globals';
 import { User } from '../_models/user'
 import { Router } from '@angular/router';
 

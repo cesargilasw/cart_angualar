@@ -84,6 +84,16 @@ export class ListComponent implements OnInit {
     });
   }
 
+  /**
+  * Call delete product API
+  * @param {id} number - Id of product to delete     
+  */
+  deleteProduct(id: number): void {
+    this._productService.deleteProduct( id ).then(result => {
+      window.location.reload();
+    });
+  }
+
   // Call API to get all categories
   getCategories(): void {
     this._categoryService.getCategory().then(result => {

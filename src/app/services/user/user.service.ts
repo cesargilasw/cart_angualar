@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Globals } from '../../classes/Globals';
-
+//import { Globals } from '../../classes/Globals';
+import { Globals } from 'src/app/classes/globals';
 @Injectable({
   providedIn: 'root'
 })
