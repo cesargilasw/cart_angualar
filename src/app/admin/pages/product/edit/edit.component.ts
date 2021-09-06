@@ -14,7 +14,8 @@ export class EditComponent implements OnInit {
   idProduct;
   isLoading = false;
   submitted = false;
-  currency = "\^([\\d]{0,4})(\\.|$)([\\d]{2,2}|)$";
+  //currency = "\^([\\d]{0,4})(\\.|$)([\\d]{2,2}|)$";
+  currency = "^[0-9]+(.[0-9]{0,2})?$";
   categories: any;
   
   constructor(
