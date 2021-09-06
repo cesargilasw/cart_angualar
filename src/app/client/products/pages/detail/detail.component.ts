@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
+import { ProductService } from '../../../../services/product/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../../../services/cart/cart.service';
+import { CartService } from '../../../../services/cart/cart.service';
 import { CartItem } from 'src/app/_models/cartItem';
 
 @Component({
@@ -43,6 +43,10 @@ export class DetailComponent implements OnInit {
       qty: 1
     };
     this._cartService.addItem(p);
+    this.router.navigate([`/product`]).then(() => {
+      window.location.reload();
+    });;
+
   }
 
   // return to product list

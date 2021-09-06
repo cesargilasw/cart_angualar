@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
-import { CategoryService } from '../../../services/category/category.service';
+import { ProductService } from '../../../../services/product/product.service';
+import { CategoryService } from '../../../../services/category/category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 @Component({
@@ -45,6 +45,7 @@ export class ListComponent implements OnInit {
   */
   search($event: Event): void {
     $event.preventDefault();
+    this.currentPage = 1;
     this.getList();
   }
 
