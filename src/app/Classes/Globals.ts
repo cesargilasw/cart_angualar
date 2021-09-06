@@ -1,6 +1,6 @@
 import { environment } from '../../environments/environment';
 
-export const globals = {
+export const Globals = {
   urlBase: environment.apiUrl,
   auth: {
     path: 'auth/',

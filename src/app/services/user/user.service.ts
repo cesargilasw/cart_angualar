@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { globals } from '../../classes/globals';
+import { Globals } from '../../classes/Globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  globals = globals;
+  globals = Globals;
 
   constructor(private http: HttpClient) { }
 
