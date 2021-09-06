@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,13 +8,16 @@ import { AuthenticationService } from '../../services/authentication.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+
   // Default the navbar is closed
   navbarOpen = false;
+  countCartItems = 0;
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService, private _cartService: CartService
     ) { }
 
   ngOnInit() {
+    this.getCartData();
   }
 
   // Functionality of toggle button on responsive view
@@ -21,8 +25,11 @@ export class NavbarComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  // method to remove the session from the local storage and redirect the user to the home page.
-
+  // Method to remove the session from the local storage and redirect the user to the home page.
   logout = () => this.authenticationService.logout();
- //logout = () => { console.log(123) }
+
+  getCartData(): void {
+    this.countCartItems = this._cartService.getCountProducts();
+  }
+
 }

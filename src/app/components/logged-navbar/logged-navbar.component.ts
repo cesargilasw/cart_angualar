@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-logged-navbar',
@@ -10,19 +11,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class LoggedNavbarComponent implements OnInit {
   currentUser: any;
   currentUserName = '';
-  constructor(private router: Router, private route: ActivatedRoute, private authenticationService: AuthenticationService) {
+  currentRole = 'client';
+  countCartItems = 0;
+  constructor(private router: Router, private route: ActivatedRoute, private authenticationService: AuthenticationService, private _cartService: CartService) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
     this.currentUserName = this.currentUser.name;
+    this.currentRole = this.currentUser.role;
+    this.getCartData();
   }
+
+  // Call logout of service auth and remove credentials of storage
   logout() {
     this.authenticationService.logout();
     location.reload();
-    //this.router.navigate(['auth']);
-/*     alert(2);
-    this.router.navigate(['/']); */
-
   }
+
+  getCartData(): void {
+    this.countCartItems = this._cartService.getCountProducts();
+  }
+  
 }

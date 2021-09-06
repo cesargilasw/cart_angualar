@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
-import { CategoryService } from '../../../services/category/category.service';
+import { ProductService } from '../../../../services/product/product.service';
+import { CategoryService } from '../../../../services/category/category.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
+
 export class ListComponent implements OnInit {
   searcProduct: string = '';
   displayedColumns: any;
@@ -56,11 +58,16 @@ export class ListComponent implements OnInit {
   }
 
   /**
-  * Shoot when the select category change
-  * @param {id} number - Id of producto to see detail     
+  * Go to edit product
+  * @param {id} number - Id of product to see detail     
   */
-  goDetails(id: number): void {
-    this.router.navigate([`/product/detail`, id]);
+   goEdit(id: number): void {
+    this.router.navigate([`admin/product/edit`, id]);
+  }
+
+  // Go to create new product view
+  goCreate() {
+    this.router.navigate([`admin/product/new`]);
   }
 
   // Call API to get all products
@@ -97,6 +104,5 @@ export class ListComponent implements OnInit {
     };
     return querySearch;
   }
-
 
 }

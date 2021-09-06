@@ -5,7 +5,7 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuardGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -13,7 +13,6 @@ export class AdminGuardGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     const currentRole = this.authenticationService.currentUserValue.role;
-    alert(currentRole);
     if (currentRole && currentRole == 'admin') {
         return true;
     }

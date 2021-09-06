@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsRoutingModule } from './products-routing.module';
-import { ListComponent } from './pages/list/list.component';
-import { DetailComponent } from './pages/detail/detail.component';
-import { MatCardModule } from '@angular/material/card';
+
+import { AdminRoutingModule } from './admin-routing.module';
+import { ListComponent } from './pages/product/list/list.component';
+import { EditComponent } from './pages/product/edit/edit.component';
+
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -11,16 +12,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button'
+import { MatCardModule } from '@angular/material/card';
+
 @NgModule({
   declarations: [
     ListComponent,
-    DetailComponent
+    EditComponent
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
-    MatCardModule,
+    AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
@@ -29,10 +31,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    MatCardModule
+  ]/* ,
   exports: [
     MatTableModule
-  ]
+  ] */
 })
-export class ProductsModule { }
+export class AdminModule { }

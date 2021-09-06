@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Globals } from '../../Classes/Globals';
+import { Globals } from '../../classes/Globals';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -10,8 +10,24 @@ export class ProductService {
   constructor(private http: HttpClient ) { }
   
   async getProducts(query?: any ): Promise<any> {
-    const url = `${this.globals.urlBase}${this.globals.products.path}`;
+    const url = `${this.globals.urlBase}${this.globals.product.path}`;
     return await this.http.get(url, {params:query}).toPromise();
   }
+
+  async getProductById(id: number ): Promise<any> {
+    const url = `${this.globals.urlBase}${this.globals.product.path}/${id}`;
+    return await this.http.get(url).toPromise();
+  }
+
+  async createProduct(params: object ): Promise<any> {
+    const url = `${this.globals.urlBase}${this.globals.admin.path}/${this.globals.admin.product}`;
+    return await this.http.post(url, params).toPromise();
+  }
+
+  async editProduct(params: object, id: number ): Promise<any> {
+    const url = `${this.globals.urlBase}${this.globals.admin.path}/${this.globals.admin.product}/${id}`;
+    return await this.http.put(url, params).toPromise();
+  }
+
 }
 

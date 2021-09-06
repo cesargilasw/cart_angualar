@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'cart-detail', component: CartDetailComponent },
+      { path: 'cart-detail', component: CartDetailComponent},
       { path: 'checkout', component: CheckoutComponent },
       { path: '**', component: CartDetailComponent }
     ]

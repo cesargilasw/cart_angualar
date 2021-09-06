@@ -5,7 +5,7 @@ import { CartRoutingModule } from './cart-routing.module';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartDetailComponent } from './pages/cart-detail/cart-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     CheckoutComponent,
@@ -15,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CartRoutingModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule
   ]
 })
 export class CartModule { }

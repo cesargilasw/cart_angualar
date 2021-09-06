@@ -9,12 +9,15 @@ export const Globals = {
     logout: 'logout',
   },
   category: {
-    path: 'productCategory',
-    questionTypes: 'questionTypes',
+    path: 'productCategory'
   },
 
-  products: {
+  product: {
     path: 'product',
-    questionTypes: 'questionTypes',
+    detail: 'product'
+  },
+  admin: {
+    path: 'admin',
+    product: 'product'
   },
 };
